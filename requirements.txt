@@ -1,4 +1,6 @@
 pyTelegramBotAPI
 opencv-python
+pyzbar
+Pillow
 flask
 python-dotenv
