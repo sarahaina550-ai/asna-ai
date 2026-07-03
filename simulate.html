@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ASNA Simulation</title>
+</head>
+<body>
+    <h1>Simulasi Scammer</h1>
+    <div id="chat-box">
+        </div>
+    <input type="text" id="user-input" placeholder="Taip mesej...">
+    <button onclick="sendMessage()">Hantar</button>
+
+    <script>
+        async function sendMessage() {
+            const msg = document.getElementById('user-input').value;
+            const response = await fetch('/api/send_message', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({message: msg, session_id: 'session1'})
+            });
+            const data = await response.json();
+            document.getElementById('chat-box').innerHTML += `<p>Scammer: ${msg}</p>`;
+            document.getElementById('chat-box').innerHTML += `<p>Mak Cik: ${data.victim_response}</p>`;
+        }
+    </script>
+</body>
+</html>
